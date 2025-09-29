@@ -1,0 +1,66 @@
+# ----------------------------------------------------------
+# Global ignores
+# ----------------------------------------------------------
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*.tmp
+*.bak
+*.log
+
+# IDE settings
+.vscode/
+.idea/
+
+# ----------------------------------------------------------
+# Frontend (Node / Vite / React) ignores
+# ----------------------------------------------------------
+
+# Dependency folders
+node_modules/
+
+# Build output folders (Vite/React)
+dist/
+build/
+
+# Local environment files
+.env
+.env.local
+.env.*.local
+
+# Cache
+.npm/
+.yarn/
+.pnpm-store/
+
+# ----------------------------------------------------------
+# Backend (Spring Boot / Maven) ignores
+# ----------------------------------------------------------
+
+# Maven build output
+portal/target/
+
+# IntelliJ / Eclipse project files
+portal/.classpath
+portal/.project
+portal/.settings/
+portal/*.iml
+
+# ----------------------------------------------------------
+# Miscellaneous
+# ----------------------------------------------------------
+
+# Coverage/test output
+coverage/
+test-output/
+
+# Logs
+*.log
+logs/
+
+# ----------------------------------------------------------
+# End of file
+# ----------------------------------------------------------
