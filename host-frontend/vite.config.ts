@@ -20,7 +20,6 @@ export default defineConfig({
 	build: {
 		target: "esnext",
 		assetsDir: "",
-		outDir: "/home/nufair-subair/Downloads/RSApp/portal/src/main/resources/static",
 	},
 	server: {
 		port: 5173,
