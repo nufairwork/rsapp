@@ -30,22 +30,26 @@ pipeline {
             }
         }
 
-        stage('Assemble Backend WAR') {
-            steps {
-                dir('portal') {
-                    // clean static first
-                    sh 'rm -rf src/main/resources/static/*'
+	stage('Assemble Backend WAR') {
+	    steps {
+		dir('portal') {
+		    // clean static first
+		    sh 'rm -rf src/main/resources/static/*'
 
-                    // copy frontend builds into backend static
-                    sh 'cp -r ../host-frontend/dist/* src/main/resources/static/'
-                    sh 'cp -r ../hr-frontend/dist/* src/main/resources/static/hrApp'
-                    sh 'cp -r ../inventory-frontend/dist/* src/main/resources/static/inventoryApp'
+		    // recreate subfolders
+		    sh 'mkdir -p src/main/resources/static/hrApp'
+		    sh 'mkdir -p src/main/resources/static/inventoryApp'
 
-                    // build Spring Boot war using Jenkins Maven tool
-                    sh 'mvn clean package -DskipTests'
-                }
-            }
-        }
+		    // copy frontend builds into backend static
+		    sh 'cp -r ../host-frontend/dist/* src/main/resources/static/'
+		    sh 'cp -r ../hr-frontend/dist/* src/main/resources/static/hrApp/'
+		    sh 'cp -r ../inventory-frontend/dist/* src/main/resources/static/inventoryApp/'
+
+		    // build Spring Boot war
+		    sh 'mvn clean package -DskipTests'
+		}
+	    }
+	}
 
         stage('Deploy to Tomcat') {
             steps {
