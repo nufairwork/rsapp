@@ -22,7 +22,6 @@ export default defineConfig({
 	build: {
 		target: "esnext",
 		assetsDir: "", // <-- this puts JS files in the root instead of /assets
-		outDir: "/home/nufair-subair/Downloads/RSApp/portal/src/main/resources/static/inventoryApp",
 		cssCodeSplit: false,
 	},
 	server: {
