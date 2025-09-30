@@ -12,6 +12,7 @@ export default defineConfig({
 			filename: "remoteEntry.js",
 			exposes: {
 				"./HrDashboard": "./src/components/HrDashboard.tsx",
+				"./HelloWorld": "./src/components/HelloWorld.tsx",
 			},
 			shared: ["react", "react-dom"],
 		}),

@@ -9,6 +9,7 @@ const HrDashboard = React.lazy(() => import("hrApp/HrDashboard"));
 const InventoryDashboard = React.lazy(
 	() => import("inventoryApp/InventoryDashboard")
 );
+const HelloWorldComponent = React.lazy(() => import("hrApp/HelloWorld"));
 
 const ProtectedRoute: React.FC<{
 	allowedRoles: string[];
@@ -33,6 +34,7 @@ function App() {
 		// When you set the basename prop on BrowserRouter, all subsequent route paths defined within your application (e.g., using <Link to="/about"> or <Route path="/dashboard">) will automatically be prefixed with this basename when constructing the actual URLs.
 		<BrowserRouter basename="/portal">
 			<Routes>
+				<Route path="/hello" element={<HelloWorldComponent />} />
 				<Route path="/login" element={<LoginPage />} />
 				<Route
 					path="/hr"

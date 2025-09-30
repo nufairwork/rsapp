@@ -1,0 +1,1 @@
+import{j as e}from"./jsx-runtime-D_zvdyIk.js";const r=()=>e.jsx("div",{className:"min-h-screen flex justify-center items-center bg-red-800 text-white font-bold text-3xl rounded-4xl",children:"Hello World"});export{r as default};

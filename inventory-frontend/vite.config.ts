@@ -1,6 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import federation from "@originjs/vite-plugin-federation";
+import tailwindcss from "@tailwindcss/vite";
+
 // https://vite.dev/config/
 export default defineConfig({
 	plugins: [
@@ -15,11 +17,13 @@ export default defineConfig({
 			},
 			shared: ["react", "react-dom"],
 		}),
+		tailwindcss(),
 	],
 	build: {
 		target: "esnext",
 		assetsDir: "", // <-- this puts JS files in the root instead of /assets
 		outDir: "/home/nufair-subair/Downloads/RSApp/portal/src/main/resources/static/inventoryApp",
+		cssCodeSplit: false,
 	},
 	server: {
 		port: 5002, // dev only
