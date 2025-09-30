@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     tools {
-        nodejs "node24"    // name of your NodeJS install in Jenkins
-        maven  "maven3"    // name of your Maven install in Jenkins
+        nodejs "node24"    // name of NodeJS installation in Jenkins
+        maven  "maven3"    // name of Maven installation in Jenkins
     }
 
     stages {
@@ -30,18 +30,18 @@ pipeline {
             }
         }
 
-        stage('Copy Builds into Backend') {
-            steps {
-                sh 'rm -rf portal/src/main/resources/static/*'
-                sh 'cp -r host-frontend/dist/* portal/src/main/resources/static/'
-                sh 'cp -r hr-frontend/dist/* portal/src/main/resources/static/hrApp/'
-                sh 'cp -r inventory-frontend/dist/* portal/src/main/resources/static/inventoryApp/'
-            }
-        }
-
-        stage('Build WAR') {
+        stage('Assemble Backend WAR') {
             steps {
                 dir('portal') {
+                    // clean static first
+                    sh 'rm -rf src/main/resources/static/*'
+
+                    // copy frontend builds into backend static
+                    sh 'cp -r ../host-frontend/dist/* src/main/resources/static/'
+                    sh 'cp -r ../hr-frontend/dist/* src/main/resources/static/'
+                    sh 'cp -r ../inventory-frontend/dist/* src/main/resources/static/'
+
+                    // build Spring Boot war using Jenkins Maven tool
                     sh 'mvn clean package -DskipTests'
                 }
             }
@@ -49,7 +49,8 @@ pipeline {
 
         stage('Deploy to Tomcat') {
             steps {
-                sh 'cp portal/target/*.war /opt/tomcat/webapps/portal.war'
+                // copy final WAR into Tomcat webapps
+                sh 'cp portal/target/portal-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/portal.war'
             }
         }
     }
