@@ -38,8 +38,8 @@ pipeline {
 
                     // copy frontend builds into backend static
                     sh 'cp -r ../host-frontend/dist/* src/main/resources/static/'
-                    sh 'cp -r ../hr-frontend/dist/* src/main/resources/static/'
-                    sh 'cp -r ../inventory-frontend/dist/* src/main/resources/static/'
+                    sh 'cp -r ../hr-frontend/dist/* src/main/resources/static/hrApp'
+                    sh 'cp -r ../inventory-frontend/dist/* src/main/resources/static/inventoryApp'
 
                     // build Spring Boot war using Jenkins Maven tool
                     sh 'mvn clean package -DskipTests'
