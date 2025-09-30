@@ -50,7 +50,7 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                 // copy final WAR into Tomcat webapps
-                sh 'cp portal/target/portal-0.0.1-SNAPSHOT.war /opt/tomcat/webapps/portal.war'
+                sh 'cp portal/target/portal-0.0.1-SNAPSHOT.war /opt/AMP/share/amp-scr/webapps/portal.war'
             }
         }
     }
